@@ -46,10 +46,10 @@ public class MergeSorter implements Callable<List<Integer>> {
         List<Integer> leftSortedList = leftSortedFuture.get();
         List<Integer> rightSortedList = rightSortedFuture.get();
 
-        return sort(leftSortedList, rightSortedList);
+        return merge(leftSortedList, rightSortedList);
     }
 
-    private static List<Integer> sort(List<Integer> leftSortedList, List<Integer> rightSortedList) {
+    private static List<Integer> merge(List<Integer> leftSortedList, List<Integer> rightSortedList) {
         int i = 0, j = 0;
         List<Integer> sortedList = new ArrayList<>();
         while (i < leftSortedList.size() && j < rightSortedList.size()) {
