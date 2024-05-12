@@ -1,2 +1,6 @@
-package designpatterns.prototype;public class Prototype {
+package designpatterns.prototype;
+
+public interface Prototype<T> {
+
+    T clone();
 }
