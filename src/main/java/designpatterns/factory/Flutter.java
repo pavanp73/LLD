@@ -11,11 +11,13 @@ public class Flutter {
     }
 
     UIFactory getUIFactoryForPlatform(SupportedPlatform platform) {
-        if (platform.equals(SupportedPlatform.ANDROID)) {
+        /*platform (platform.equals(SupportedPlatform.ANDROID)) {
             return new AndroidUIFactory();
         } else if (platform.equals(SupportedPlatform.IOS)) {
             return new IOSUIFactory();
         }
-        return null;
+        return null;*/
+
+        return UIFactoryFactory.getUIFactoryForPlatform(platform);
     }
 }
