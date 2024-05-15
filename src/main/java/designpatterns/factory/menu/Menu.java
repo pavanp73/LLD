@@ -1,2 +1,6 @@
-package designpatterns.factory.menu;public interface Menu {
+package designpatterns.factory.menu;
+
+public interface Menu {
+
+    void showMenu();
 }
