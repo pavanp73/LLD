@@ -90,6 +90,59 @@ public class Game {
         board.printBoard();
     }
 
+    public void makeMove() {
+        Player currentPlayer = players.get(nextPlayerIndex);
+
+        System.out.println("This is " + currentPlayer.getName() + "'s move");
+
+        // player will choose that they want to make
+        Move move = currentPlayer.makeMove(board);
+
+        // game will validate the move that the player has chosen is valid or not
+        if (!validateMove(move)) {
+            throw new RuntimeException("Invalid move. Please retry");
+        }
+
+        // move is valid so apply move to the board
+        Cell boardCell = board.getCell(move.getCell().getRow(), move.getCell().getCol());
+        boardCell.setCellState(CellState.FILLED);
+        boardCell.setPlayer(currentPlayer);
+        nextPlayerIndex = (nextPlayerIndex + 1) % players.size();
+
+        Move finalMove = new Move(boardCell, currentPlayer);
+        moves.add(finalMove);
+
+        if (checkWinner(finalMove)) {
+            winner = currentPlayer;
+            gameState = GameState.ENDED;
+        } else if (moves.size() == board.getSize() * board.getSize()) {
+            gameState = GameState.DRAW;
+        }
+    }
+
+    private boolean checkWinner(Move move) {
+        for (GameWinningStrategy winningStrategy : gameWinningStrategies) {
+            if (winningStrategy.checkWinner(board, move)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean validateMove(Move move) {
+        int row = move.getCell().getRow();
+        int col = move.getCell().getCol();
+
+        if (row < 0 || row >= board.getSize() || col < 0 && col >= board.getSize()) {
+            return false;
+        }
+
+        if (!board.getCell(row, col).getCellState().equals(CellState.EMPTY)) {
+            return false;
+        }
+        return true;
+    }
+
     public static class Builder {
         private int size;
         private List<Player> players;

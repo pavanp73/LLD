@@ -1,10 +1,13 @@
 package machinecoding.tictactoe.models;
 
+import java.util.Scanner;
+
 public class Player {
 
     private Symbol symbol;
     private String name;
     private PlayerType playerType;
+    private static final Scanner SCANNER = new Scanner(System.in);
 
     public Player(String name, PlayerType playerType, Symbol symbol) {
         this.name = name;
@@ -34,5 +37,14 @@ public class Player {
 
     public void setSymbol(Symbol symbol) {
         this.symbol = symbol;
+    }
+
+    public Move makeMove(Board board) {
+        // Take row, col in the input from the player
+        System.out.println("Please enter row number where you want to make a move");
+        int row = SCANNER.nextInt();
+        System.out.println("Please enter column number where you want to make a move");
+        int col = SCANNER.nextInt();
+        return new Move(new Cell(row, col), this);
     }
 }

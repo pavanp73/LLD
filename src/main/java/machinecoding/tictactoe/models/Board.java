@@ -43,4 +43,8 @@ public class Board {
             System.out.println();
         }
     }
+
+    public Cell getCell(int row, int col) {
+        return this.board.get(row).get(col);
+    }
 }

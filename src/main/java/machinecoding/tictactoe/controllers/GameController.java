@@ -1,5 +1,6 @@
 package machinecoding.tictactoe.controllers;
 
+import machinecoding.tictactoe.exceptions.InvalidMoveException;
 import machinecoding.tictactoe.models.Game;
 import machinecoding.tictactoe.models.GameState;
 import machinecoding.tictactoe.models.Player;
@@ -26,7 +27,7 @@ public class GameController {
     }
 
     public void makeMove(Game game) {
-        return;
+        game.makeMove();
     }
 
     public GameState checkGameState(Game game) {

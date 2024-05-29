@@ -38,7 +38,7 @@ public class TicTacToeMain {
 
         Game game = gameController.startGame(size, players, gameWinningStrategies);
 
-        gameController.printBoard(game);
+        //gameController.printBoard(game);
 
         // Let's play the game
 
@@ -47,10 +47,11 @@ public class TicTacToeMain {
             // make a move
 
             gameController.printBoard(game);
-            System.out.println("Do you want to undo?");
+            System.out.println("Do you want to undo? Y/N or Yes/No");
             String isUndo = scanner.next();
 
-            if (isUndo.equalsIgnoreCase("Y")) {
+            if (isUndo.equalsIgnoreCase("Y") ||
+                    isUndo.equalsIgnoreCase("Yes")) {
                 // undo operation
                 gameController.undo(game);
                 // continue
