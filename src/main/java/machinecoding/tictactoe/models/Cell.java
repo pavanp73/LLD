@@ -44,4 +44,12 @@ public class Cell {
     public void setRow(int row) {
         this.row = row;
     }
+
+    public void display() {
+        if (player == null) {
+            System.out.print("|--|");
+        } else {
+            System.out.print("|" + player.getSymbol().getcChar() + "|");
+        }
+    }
 }

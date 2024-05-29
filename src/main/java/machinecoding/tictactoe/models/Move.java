@@ -2,12 +2,12 @@ package machinecoding.tictactoe.models;
 
 public class Move {
 
-    private Move move;
+    private Player player;
     private Cell cell;
 
-    public Move(Cell cell, Move move) {
+    public Move(Cell cell, Player player) {
         this.cell = cell;
-        this.move = move;
+        this.player = player;
     }
 
     public Cell getCell() {
@@ -18,11 +18,11 @@ public class Move {
         this.cell = cell;
     }
 
-    public Move getMove() {
-        return move;
+    public Player getPlayer() {
+        return player;
     }
 
-    public void setMove(Move move) {
-        this.move = move;
+    public void setPlayer(Player player) {
+        this.player = player;
     }
 }
